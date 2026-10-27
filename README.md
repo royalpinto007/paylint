@@ -8,7 +8,7 @@ Read the Solana Pay request behind a link or QR code.
 [MIT](LICENSE) · [Architecture](docs/architecture.md) · [What gets checked](docs/checks.md)
 
 ```sh
-npx paylint
+npx @royalpinto007/paylint
 ```
 
 Open **http://127.0.0.1:4460**. Node.js 22.18+ required.
@@ -23,8 +23,8 @@ Open **http://127.0.0.1:4460**. Node.js 22.18+ required.
 ### CLI
 
 ```sh
-npx paylint 'solana:mvines9iiHiQTysrwkJjGf2gb9Ex9jXJX8ns3qwf2kN?amount=0.01' --json
-npx paylint --port 4465
+npx @royalpinto007/paylint 'solana:mvines9iiHiQTysrwkJjGf2gb9Ex9jXJX8ns3qwf2kN?amount=0.01' --json
+npx @royalpinto007/paylint --port 4465
 ```
 
 Quote URLs so your shell preserves `&`. QR image inspection is available in the dashboard. Exit `0`: no structural errors. Exit `1`: malformed or unsupported request. Exit `2`: usage or server error.
