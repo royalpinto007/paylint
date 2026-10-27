@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="dark" />
+    <meta
+      name="description"
+      content="Inspect Solana Pay links and QR images locally, without a wallet or payment."
+    />
+    <title>paylint | Read the request before the QR</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <script type="module" src="/app.js"></script>
+  </head>
+  <body>
+    <div class="shell">
+      <header>
+        <a class="brand" href="/">paylint<span>↗</span></a>
+        <div class="local"><i></i>LOCAL · OFFLINE</div>
+        <a href="#how-it-works">How it works</a>
+      </header>
+      <main>
+        <section class="intro">
+          <p class="eyebrow">SOLANA PAY / REQUEST INSPECTOR</p>
+          <h1>See what’s<br />inside the request.</h1>
+          <p>
+            Paste a payment link or open a QR image.<br />Read the details
+            before anything moves.
+          </p>
+        </section>
+        <div class="workspace">
+          <section class="editor">
+            <div class="section-top">
+              <h2>01 <span>The request</span></h2>
+              <span class="tag">READ ONLY</span>
+            </div>
+            <form id="inspect-form">
+              <label for="request">Solana Pay URL</label
+              ><textarea
+                id="request"
+                placeholder="solana:&lt;recipient&gt;?amount=0.01"
+                maxlength="8192"
+                spellcheck="false"
+                required
+              ></textarea
+              ><button class="primary" type="submit">
+                Inspect request <span aria-hidden="true">↗</span>
+              </button>
+            </form>
+            <div class="divider"><span>OR</span></div>
+            <label class="upload" for="qr"
+              ><strong>Open a QR image <span>＋</span></strong
+              ><span
+                >PNG, JPEG or WebP · up to 8 MB · stays in this browser</span
+              ><input
+                id="qr"
+                type="file"
+                accept="image/png,image/jpeg,image/webp"
+                aria-label="QR image"
+            /></label>
+            <p id="feedback" role="status" aria-live="polite"></p>
+            <div class="examples">
+              <p>TRY AN EXAMPLE</p>
+              <button type="button" data-example="sol">SOL example</button
+              ><button type="button" data-example="token">Token example</button
+              ><button type="button" data-example="transaction">
+                Transaction link</button
+              ><button type="button" data-example="bad">
+                Malformed example
+              </button>
+            </div>
+            <p class="fine">
+              No wallet connection. No link is opened or fetched.<br />Nothing
+              is saved unless you export it.
+            </p>
+          </section>
+          <section class="results" aria-label="Inspection result">
+            <div class="section-top">
+              <h2>02 <span>The breakdown</span></h2>
+              <span id="result-kind" class="tag">READY</span>
+            </div>
+            <div id="result" aria-live="polite">
+              <div class="empty">
+                <span class="reticle">⌗</span>
+                <h3>A request, made readable.</h3>
+                <p>
+                  The recipient, exact amount, metadata and<br />potential
+                  issues will appear here.
+                </p>
+              </div>
+            </div>
+            <div id="exports" class="exports" hidden>
+              <button id="copy" type="button">Copy report</button
+              ><button id="json" type="button">Export JSON</button
+              ><button id="md" type="button">Export Markdown</button>
+            </div>
+          </section>
+        </div>
+        <details id="how-it-works">
+          <summary>
+            How it works <span>URL / QR → local parser → diagnostics</span>
+          </summary>
+          <p>
+            QR images are decoded in your browser with jsQR. Both the browser
+            and CLI use the same deterministic parser. We check URL structure,
+            address encoding and amount formatting. We do not verify recipient
+            identity, token decimals, payment status or transaction safety.
+          </p>
+          <img
+            src="/architecture.svg"
+            alt="Solana Pay URL or local QR image flows through an offline decoder and parser to details and exports."
+          />
+          <p>
+            The baseline
+            <a
+              href="https://github.com/solana-developers/solana-pay/blob/master/SPEC.md"
+              target="_blank"
+              rel="noreferrer"
+              >Solana Pay specification</a
+            >
+            defines the supported fields. Unknown extensions need review. Solana
+            Pay URLs do not encode a network.
+          </p>
+        </details>
+      </main>
+      <footer>
+        <span>Inspect the intent. Keep control.</span
+        ><span>Open source · MIT · No telemetry</span>
+      </footer>
+    </div>
+  </body>
+</html>
