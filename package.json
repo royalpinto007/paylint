@@ -1,6 +1,6 @@
 {
-  "name": "paylint",
-  "version": "0.1.0",
+  "name": "@royalpinto007/paylint",
+  "version": "0.1.1",
   "type": "module",
   "license": "MIT",
   "description": "Inspect Solana Pay links and QR codes locally without connecting a wallet or making payments.",
@@ -52,7 +52,7 @@
     "type": "git",
     "url": "git+https://github.com/royalpinto007/paylint.git"
   },
-  "homepage": "https://www.npmjs.com/package/paylint",
+  "homepage": "https://www.npmjs.com/package/@royalpinto007/paylint",
   "bugs": {
     "url": "https://github.com/royalpinto007/paylint/issues"
   },
