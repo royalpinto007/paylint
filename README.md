@@ -2,7 +2,12 @@
 
 Read the Solana Pay request behind a link or QR code.
 
-![paylint dashboard](docs/screenshot.png)
+<picture>
+  <source media="(prefers-reduced-motion: reduce)" srcset="https://raw.githubusercontent.com/royalpinto007/paylint/main/docs/screenshot.png">
+  <img src="https://raw.githubusercontent.com/royalpinto007/paylint/main/docs/demo-preview.webp" alt="Inspecting a Solana Pay link and decoding a QR image">
+</picture>
+
+[Download the 24-second demo (MP4)](https://github.com/royalpinto007/paylint/releases/download/project-demo/paylint-demo.mp4)
 
 [![CI](https://github.com/royalpinto007/paylint/actions/workflows/ci.yml/badge.svg)](https://github.com/royalpinto007/paylint/actions/workflows/ci.yml)
 [MIT](LICENSE) · [Architecture](docs/architecture.md) · [What gets checked](docs/checks.md)
